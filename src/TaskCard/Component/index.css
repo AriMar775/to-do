@@ -1,0 +1,15 @@
+.task-card-wrapper {
+  padding: 20px;
+  display: flex;
+  height: fit-content;
+  max-width: 426px;
+  font-size: 18px;
+  color: white;
+  background-color: #686e7c;
+  border-radius: 5px;
+}
+
+p {
+  margin: 0;
+  word-break: break-all;
+}
