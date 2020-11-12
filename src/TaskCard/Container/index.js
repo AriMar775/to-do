@@ -1,24 +1,14 @@
 import React, { useState, useCallback } from "react";
+import PropTypes from "prop-types";
 
-import { TaskCard } from "../Component";
+import TaskCard from "../component";
 
 const TaskCardContainer = ({ task }) => {
-  const [isChecked, setCheck] = useState(true);
+  const [isChecked, setCheck] = useState(false);
 
-  const onHandleChange = useCallback(
-    (e) => {
-      let paragraph = e.target.parentNode.parentNode.nextSibling;
-
-      if (isChecked) {
-        paragraph.setAttribute("style", "text-decoration: line-through;");
-      } else {
-        paragraph.removeAttribute("style", "text-decoration: line-through;");
-      }
-
-      setCheck(!isChecked);
-    },
-    [isChecked]
-  );
+  const onHandleChange = useCallback(() => {
+    setCheck((prev) => !prev);
+  }, []);
 
   return (
     <TaskCard
@@ -30,3 +20,8 @@ const TaskCardContainer = ({ task }) => {
 };
 
 export default TaskCardContainer;
+
+TaskCardContainer.propTypes = {
+  task: PropTypes.shape({ value: PropTypes.string, id: PropTypes.string })
+    .isRequired,
+};

@@ -21,3 +21,7 @@ p {
   margin: 0;
   word-break: break-all;
 }
+
+.text-underline {
+  text-decoration: line-through;
+}

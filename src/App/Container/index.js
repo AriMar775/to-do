@@ -1,30 +1,41 @@
-import React, { useCallback } from "react";
-import { useSelector, useDispatch, connect } from "react-redux";
+import React, { useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
-import { App } from "../Component";
+import App from "../component";
 import { addTask } from "../../redux/actions";
 import { getTasks } from "../../redux/selectors";
 
 const AppContainer = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(getTasks);
+  const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      const taskValue = e.target.querySelector("input").value;
-      const idValue = uuidv4();
-      const task = { value: taskValue, id: idValue };
-      if (taskValue) {
+      const task = { value: inputValue, id: uuidv4() };
+
+      if (inputValue) {
         dispatch(addTask(task));
-        e.target.querySelector("input").value = "";
+        setInputValue("");
       }
     },
-    [dispatch]
+    [dispatch, inputValue]
   );
 
-  return <App handleSubmit={handleSubmit} tasks={tasks} />;
+  const handleChangeInput = useCallback((e) => {
+    setInputValue(e.target.value);
+  }, []);
+
+  return (
+    <App
+      handleChangeInput={handleChangeInput}
+      handleSubmit={handleSubmit}
+      tasks={tasks}
+      inputValue={inputValue}
+    />
+  );
 };
 
 export default AppContainer;
