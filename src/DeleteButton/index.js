@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { IconButton, withStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 
@@ -13,15 +13,15 @@ const StyledIconButton = withStyles({
   },
 })(IconButton);
 
-const DeleteButton = ({ taskIndex }) => {
+const DeleteButton = ({ taskId }) => {
   const dispatch = useDispatch();
 
-  const handleClick = (taskIndex) => {
-    dispatch(deleteTask(taskIndex));
-  };
+  const handleClick = useCallback(() => {
+    dispatch(deleteTask(taskId));
+  }, [dispatch, taskId]);
 
   return (
-    <StyledIconButton color="secondary" onClick={() => handleClick(taskIndex)}>
+    <StyledIconButton color="secondary" onClick={() => handleClick()}>
       <img src={Delete} alt="delete button"></img>
     </StyledIconButton>
   );

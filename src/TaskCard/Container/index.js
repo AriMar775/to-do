@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { TaskCard } from "../Component";
 
-const TaskCardContainer = ({ task, taskIndex }) => {
+const TaskCardContainer = ({ task }) => {
   const [isChecked, setCheck] = useState(true);
 
-  const onHandleChange = (e) => {
-    let paragraph = e.target.parentNode.parentNode.nextSibling;
+  const onHandleChange = useCallback(
+    (e) => {
+      let paragraph = e.target.parentNode.parentNode.nextSibling;
 
-    setCheck(!isChecked);
-    if (isChecked) {
-      paragraph.setAttribute("style", "text-decoration: line-through;");
-    } else {
-      paragraph.removeAttribute("style", "text-decoration: line-through;");
-    }
-  };
+      if (isChecked) {
+        paragraph.setAttribute("style", "text-decoration: line-through;");
+      } else {
+        paragraph.removeAttribute("style", "text-decoration: line-through;");
+      }
+
+      setCheck(!isChecked);
+    },
+    [isChecked]
+  );
 
   return (
     <TaskCard
-      taskIndex={taskIndex}
       task={task}
       onHandleChange={onHandleChange}
       isChecked={isChecked}

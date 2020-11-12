@@ -30,8 +30,8 @@ export const App = ({ tasks, handleSubmit }) => {
         </StyledIconButton>
       </form>
       <div className="tasks-wrapper">
-        {tasks.map((task, i) => (
-          <TaskCard task={task} key={i} taskIndex={i} />
+        {tasks.map((task) => (
+          <TaskCard task={task} key={task.id} />
         ))}
       </div>
     </div>
