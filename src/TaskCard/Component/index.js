@@ -2,19 +2,25 @@ import React from "react";
 import { Checkbox, withStyles } from "@material-ui/core";
 
 import "./index.css";
+import DeleteButton from "../../DeleteButton";
 
 const StyledCheckbox = withStyles({
   root: {
-    padding: "0 10px 0 0",
     color: "#808FE4",
   },
 })(Checkbox);
 
-export const TaskCard = ({ task }) => {
+export const TaskCard = ({ task, isChecked, onHandleChange }) => {
   return (
-    <div className="task-card-wrapper">
-      <StyledCheckbox color="primary"></StyledCheckbox>
-      <p>{task}</p>
+    <div className="task-wrapper">
+      <div className="task-card-wrapper">
+        <StyledCheckbox
+          color="secondary"
+          onChange={onHandleChange}
+        ></StyledCheckbox>
+        <p>{task}</p>
+      </div>
+      {!isChecked ? <DeleteButton task={task} /> : null}
     </div>
   );
 };

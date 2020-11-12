@@ -9,13 +9,13 @@ const AppContainer = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(getTasks);
 
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault();
-    let taskValue = event.target.querySelector("input").value;
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    let taskValue = e.target.querySelector("input").value;
 
     if (taskValue) {
       dispatch(addTask(taskValue));
-      event.target.querySelector("input").value = "";
+      e.target.querySelector("input").value = "";
     }
   }, []);
 

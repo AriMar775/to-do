@@ -1,8 +1,16 @@
+.task-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 466px;
+}
+
 .task-card-wrapper {
+  margin-top: 10px;
   padding: 20px;
   display: flex;
+  align-items: center;
   height: fit-content;
-  max-width: 426px;
+  width: 360px;
   font-size: 18px;
   color: white;
   background-color: #686e7c;

@@ -1,7 +1,9 @@
 .app-wrapper {
   max-height: 70vh;
 }
+
 .tasks-wrapper {
   display: flex;
   flex-direction: column;
+  max-width: 426px;
 }
