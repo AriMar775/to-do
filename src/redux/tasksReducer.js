@@ -9,7 +9,12 @@ export const tasksReducer = (state = initialState, action) => {
     case ADD_TASK:
       return { ...state, tasks: [...state.tasks, action.payload] };
     case DELETE_TASK:
-      return state;
+      return {
+        ...state,
+        tasks: state.tasks.filter((item, i) =>
+          i !== action.payload ? item : null
+        ),
+      };
     default:
       return state;
   }

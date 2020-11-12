@@ -7,9 +7,9 @@ export function addTask(task) {
   };
 }
 
-export function deleteTask(task) {
+export function deleteTask(taskIndex) {
   return {
     type: DELETE_TASK,
-    payload: task,
+    payload: taskIndex,
   };
 }

@@ -10,7 +10,7 @@ const StyledCheckbox = withStyles({
   },
 })(Checkbox);
 
-export const TaskCard = ({ task, isChecked, onHandleChange }) => {
+export const TaskCard = ({ task, taskIndex, isChecked, onHandleChange }) => {
   return (
     <div className="task-wrapper">
       <div className="task-card-wrapper">
@@ -20,7 +20,7 @@ export const TaskCard = ({ task, isChecked, onHandleChange }) => {
         ></StyledCheckbox>
         <p>{task}</p>
       </div>
-      {!isChecked ? <DeleteButton task={task} /> : null}
+      {!isChecked ? <DeleteButton taskIndex={taskIndex} /> : null}
     </div>
   );
 };

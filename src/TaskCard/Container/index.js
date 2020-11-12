@@ -2,13 +2,11 @@ import React, { useState } from "react";
 
 import { TaskCard } from "../Component";
 
-const TaskCardContainer = ({ task }) => {
+const TaskCardContainer = ({ task, taskIndex }) => {
   const [isChecked, setCheck] = useState(true);
 
   const onHandleChange = (e) => {
     let paragraph = e.target.parentNode.parentNode.nextSibling;
-
-    console.log(e.target);
 
     setCheck(!isChecked);
     if (isChecked) {
@@ -20,6 +18,7 @@ const TaskCardContainer = ({ task }) => {
 
   return (
     <TaskCard
+      taskIndex={taskIndex}
       task={task}
       onHandleChange={onHandleChange}
       isChecked={isChecked}

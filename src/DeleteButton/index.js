@@ -1,7 +1,9 @@
 import React from "react";
 import { IconButton, withStyles } from "@material-ui/core";
+import { useDispatch } from "react-redux";
 
 import Delete from "../assets/delete.png";
+import { deleteTask } from "../redux/actions";
 
 const StyledIconButton = withStyles({
   root: {
@@ -11,11 +13,15 @@ const StyledIconButton = withStyles({
   },
 })(IconButton);
 
-const DeleteButton = ({ task }) => {
-  const handleClick = (task) => {};
+const DeleteButton = ({ taskIndex }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = (taskIndex) => {
+    dispatch(deleteTask(taskIndex));
+  };
 
   return (
-    <StyledIconButton color="secondary" onClick={handleClick(task)}>
+    <StyledIconButton color="secondary" onClick={() => handleClick(taskIndex)}>
       <img src={Delete} alt="delete button"></img>
     </StyledIconButton>
   );

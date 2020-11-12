@@ -31,7 +31,7 @@ export const App = ({ tasks, handleSubmit }) => {
       </form>
       <div className="tasks-wrapper">
         {tasks.map((task, i) => (
-          <TaskCard task={task} key={i} />
+          <TaskCard task={task} key={i} taskIndex={i} />
         ))}
       </div>
     </div>
