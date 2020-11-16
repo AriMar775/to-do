@@ -39,10 +39,10 @@ const App = ({
         <div className="modal-delete-selected-tasks">
           <span>Are you sure?</span>
           <div className="modal-buttons">
-            <div className="modal-accept-button" onClick={handleDeleteSelected}>
+            <div className="modal-button-accept" onClick={handleDeleteSelected}>
               Yes
             </div>
-            <div className="modal-decline-button" onClick={handleShowModal}>
+            <div className="modal-button-decline" onClick={handleShowModal}>
               No
             </div>
           </div>

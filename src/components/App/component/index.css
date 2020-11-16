@@ -47,8 +47,8 @@
   width: 180px;
 }
 
-.modal-accept-button,
-.modal-decline-button {
+.modal-button-accept,
+.modal-button-decline {
   padding: 5px;
   display: flex;
   justify-content: center;
@@ -57,24 +57,24 @@
   border-radius: 5px;
 }
 
-.modal-accept-button:hover,
-.modal-decline-button:hover {
+.modal-button-accept:hover,
+.modal-button-decline:hover {
   cursor: pointer;
 }
 
-.modal-accept-button {
+.modal-button-accept {
   background: #e33371;
 }
 
-.modal-accept-button:hover {
+.modal-button-accept:hover {
   background: #de6d94;
 }
 
-.modal-decline-button {
+.modal-button-decline {
   color: #e33371;
   border: 1px solid #e33371;
 }
 
-.modal-decline-button:hover {
+.modal-button-decline:hover {
   background: #e24d8144;
 }
