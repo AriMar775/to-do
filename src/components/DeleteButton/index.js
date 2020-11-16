@@ -3,8 +3,8 @@ import { IconButton, withStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
-import Delete from "../assets/delete.png";
-import { deleteTask } from "../redux/actions";
+import Delete from "../../assets/delete.png";
+import { deleteTask } from "../../redux/actions";
 
 const StyledIconButton = withStyles({
   root: {
@@ -16,12 +16,13 @@ const StyledIconButton = withStyles({
   },
 })(IconButton);
 
-const DeleteButton = ({ taskId }) => {
+const DeleteButton = ({ taskId, setSelectedTasksCount }) => {
   const dispatch = useDispatch();
 
   const handleClick = useCallback(() => {
     dispatch(deleteTask(taskId));
-  }, [dispatch, taskId]);
+    setSelectedTasksCount((prev) => prev - 1);
+  }, [dispatch, taskId, setSelectedTasksCount]);
 
   return (
     <StyledIconButton color="secondary" onClick={handleClick}>
@@ -34,4 +35,5 @@ export default DeleteButton;
 
 DeleteButton.propTypes = {
   taskId: PropTypes.string.isRequired,
+  setSelectedTasksCount: PropTypes.func,
 };

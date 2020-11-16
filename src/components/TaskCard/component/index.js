@@ -11,7 +11,12 @@ const StyledCheckbox = withStyles({
   },
 })(Checkbox);
 
-const TaskCard = ({ task, isChecked, onHandleChange }) => {
+const TaskCard = ({
+  task,
+  isChecked,
+  onHandleChange,
+  setSelectedTasksCount,
+}) => {
   return (
     <div className="task-wrapper">
       <div className="task-card-wrapper">
@@ -21,7 +26,12 @@ const TaskCard = ({ task, isChecked, onHandleChange }) => {
         ></StyledCheckbox>
         <p className={isChecked ? "text-underline" : undefined}>{task.value}</p>
       </div>
-      {isChecked && <DeleteButton taskId={task.id} />}
+      {isChecked && (
+        <DeleteButton
+          taskId={task.id}
+          setSelectedTasksCount={setSelectedTasksCount}
+        />
+      )}
     </div>
   );
 };
@@ -32,4 +42,5 @@ TaskCard.propTypes = {
     .isRequired,
   isChecked: PropTypes.bool,
   onHandleChange: PropTypes.func,
+  setSelectedTasksCount: PropTypes.func,
 };
